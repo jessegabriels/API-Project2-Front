@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div x-data="{
+        responsedata: null,
+        async getDay() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/')).json();
+            console.log(data);
+        }
+    }" x-init="getDay">
+        <button x-on:click="getDay">Get all locations</button>
+        Data returned: <strong x-text="responsedata">Placeholder</strong>
+    </div>
+    <div x-data="{
+        responsedata: null,
+        async getWeek() {
+            this.responsedata = await (await fetch('https://project-service-jessegabriels.cloud.okteto.net/meeting/week')).json();
+            console.log(data);
+        }
+    }" x-init="getWeek">
+        <button x-on:click="getWeek">Get measurements of the week</button>
+        Data returned: <strong x-text="responsedata">Placeholder</strong>
+    </div>
+</body>
+
+</html>
