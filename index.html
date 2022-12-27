@@ -13,7 +13,7 @@
         }
     }" x-init="getLocations">
         <button x-on:click="getLocations">Get all locations</button>
-        <h2>Data returned: <strong x-text="data[0]">Placeholder</strong></h2>
+        <h2>Data returned: <strong x-text="data[0].gamemode_name">Placeholder</strong></h2>
     </div>
 
     <div x-data="{
