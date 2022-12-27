@@ -1,29 +1,21 @@
 <html>
 
 <head>
-    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <script defer="" src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 
 <body>
     <div x-data="{
-        responsedata: null,
-        async getLocations() {
-            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/')).json();
-            console.log(responsedata);
-        }
-    }" x-init="getLocations">
-        <button x-on:click="getLocations">Get all locations</button>
-        <h2>Data returned: <strong x-text="data[0].gamemode_name">Placeholder</strong></h2>
-    </div>
+        responsedata: {},
 
-    <div x-data="{
-        responsedata: null,
-        async getData() {
-            this.responsedata = await (await fetch('https://jsonplaceholder.typicode.com/posts')).json();
+        async getGamemodes() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/')).json();
+
         }
     }">
-        <button x-on:click="getData">Send get request</button>
-        Data returned: <strong x-text="responsedata[0].title">Placeholder</strong>
+        <button x-on:click="getGamemodes">Send get request</button>
+        Data returned: <strong x-text="responsedata[0].gamemode_name"></strong>
+
     </div>
 
 </body>
