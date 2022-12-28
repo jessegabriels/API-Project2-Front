@@ -33,6 +33,20 @@
         </h2>
     </div>
 
+    <div x-data="{
+        responsedata: {},
+
+        async getClass() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/classes/')).json();
+
+        }
+    }">
+        <button x-on:click="getClass">Send get request</button>
+        <h2>
+            Data returned: <strong x-text="responsedata[0].class_name"></strong>
+        </h2>
+    </div>
+
 </body>
 
 </html>
