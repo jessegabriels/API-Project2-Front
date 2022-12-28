@@ -19,6 +19,20 @@
         </h2>
     </div>
 
+    <div x-data="{
+        responsedata: {},
+
+        async getLocations() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/')).json();
+
+        }
+    }">
+        <button x-on:click="getLocations">Send get request</button>
+        <h2>
+            Data returned: <strong x-text="responsedata[0].location_name"></strong>
+        </h2>
+    </div>
+
 </body>
 
 </html>
