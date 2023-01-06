@@ -90,23 +90,7 @@
             <div class="col-2">
 
             </div>
-            <div class="col-6">
-                <div class="">
-                    <div x-data="{
-                        responsedata: {},
 
-                        async getLocations() {
-                        this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/')).json();
-
-                        }
-                    }">
-                        <button x-on:click="getLocations" class="btn btn-primary">GET all gamemodes</button>
-                        <h5>
-                            Location returned: <strong x-text="responsedata.gamemode_name"></strong>
-                        </h5>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
