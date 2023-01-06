@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script defer="" src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 
     <style>
         body {
@@ -89,6 +90,28 @@
             </div>
             <div class="col-2">
 
+            </div>
+
+            <div class="col-5">
+                <div class="">
+                    <div x-data="{
+        responsedata: {},
+
+        async getGamemodes() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemode/')).json();
+
+        }
+    }">
+                        <button x-on:click="getGamemodes" class="btn btn-primary">GET gamemode</button>
+
+                        <h5>
+                            Gamemode returned: <strong x-text="responsedata.gamemode_name"></strong>
+                        </h5>
+                        <ul>
+                            <li ng-repeat="(key, value) in responsdata">{{key}}: {{value}}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
         </div>
