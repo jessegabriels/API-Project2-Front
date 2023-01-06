@@ -1,11 +1,35 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script defer="" src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <style>
+        body {
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b0/Sturmgewehrsch%C3%BCtze_%2822763755132%29.jpg);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h5 {
+            color: #fff;
+        }
+
+    </style>
 </head>
 
 <body>
-    <div x-data="{
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div x-data="{
         responsedata: {},
 
         async getGamemodes() {
@@ -13,13 +37,18 @@
 
         }
     }">
-        <button x-on:click="getGamemodes">Send get request</button>
-        <h2>
-            Data returned: <strong x-text="responsedata[0].gamemode_name"></strong>
-        </h2>
-    </div>
+                    <button x-on:click="getGamemodes" class="btn btn-primary">GET gamemode</button>
+                    <h5>
+                        Gamemode returned: <strong x-text="responsedata.gamemode_name"></strong>
+                    </h5>
+                </div>
+            </div>
+            <div class="col-2">
 
-    <div x-data="{
+            </div>
+
+            <div class="col-5">
+                <div x-data="{
         responsedata: {},
 
         async getLocations() {
@@ -27,26 +56,16 @@
 
         }
     }">
-        <button x-on:click="getLocations">Send get request</button>
-        <h2>
-            Data returned: <strong x-text="responsedata[0].location_name"></strong>
-        </h2>
+                    <button x-on:click="getLocations" class="btn btn-primary">GET location</button>
+                    <h5>
+                        Location returned: <strong x-text="responsedata.location_name"></strong>
+                    </h5>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-
-    <div x-data="{
-        responsedata: {},
-
-        async getClass() {
-            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/classes/')).json();
-
-        }
-    }">
-        <button x-on:click="getClass">Send get request</button>
-        <h2>
-            Data returned: <strong x-text="responsedata[0].class_name"></strong>
-        </h2>
-    </div>
-
 </body>
 
 </html>
