@@ -38,12 +38,13 @@
                 <div x-data="{
         responsedata: null,
         posttitle: null,
+        
         async postgamemode() {
             this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/', 
             {
                 method: 'POST',
                 body: JSON.stringify({
-                    gamemode_name: this.posttitle,
+                    gamemode_name: this.posttitle
                     
                 }),
                 headers: {
