@@ -35,35 +35,56 @@
         <div class="row">
             <div class="col-5">
 
-                <div class="">
-                    <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/" method="post">
-                        <label for="name">Gamemode name:</label><br>
-                        <input type="text" id="gamemode_name" name="gamemode_name"><br>
-                        <input type="submit" class="btn btn-primary" value="Create gamemode">
-                    </form>
-                </div>
-                <div class="">
-                    <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/" method="post">
-                        <label for="name">Location name:</label><br>
-                        <input type="text" id="location_name" name="location_name"><br>
-                        <input type="submit" class="btn btn-primary" value="Create location">
-                    </form>
-                </div>
-                <div class="">
-                    <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/classes/" method="post">
-                        <label for="name">Class name:</label><br>
-                        <input type="text" id="class_name" name="class_name"><br>
-                        <input type="submit" class="btn btn-primary" value="Create class">
-                    </form>
-                </div>
-            </div>
-            <div class="col-2">
+                <div x-data="{
+        responsedata: null,
+        posttitle: null,
+        async postgamemode() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/', 
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: this.posttitle,
+                    gamemode_name: 'bar',
+                    
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })).json();
 
-            </div>
-            <div class="col-5">
+            console.log(this.responsedata);
+        },
+    }">
+                    <input type="text" x-model="posttitle">
+                    <button x-on:click="postgamemode">Call method</button>
 
-                <div class="">
-                    <div x-data="{
+
+
+                    <div class="">
+                        <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/" method="post">
+                            <label for="name">Location name:</label><br>
+                            <input type="text" id="location_name" name="location_name"><br>
+                            <input type="submit" class="btn btn-primary" value="Create location">
+                        </form>
+                    </div>
+
+
+
+                    <div class="">
+                        <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/classes/" method="post">
+                            <label for="name">Class name:</label><br>
+                            <input type="text" id="class_name" name="class_name"><br>
+                            <input type="submit" class="btn btn-primary" value="Create class">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-2">
+
+                </div>
+                <div class="col-5">
+
+                    <div class="">
+                        <div x-data="{
         responsedata: {},
 
         async getGamemodes() {
@@ -71,16 +92,16 @@
 
         }
     }">
-                        <button x-on:click="getGamemodes" class="btn btn-primary">GET gamemode</button>
+                            <button x-on:click="getGamemodes" class="btn btn-primary">GET gamemode</button>
 
-                        <h5>
-                            Gamemode returned: <strong x-text="responsedata.gamemode_name"></strong>
-                        </h5>
+                            <h5>
+                                Gamemode returned: <strong x-text="responsedata.gamemode_name"></strong>
+                            </h5>
+                        </div>
                     </div>
-                </div>
-                <br>
-                <div class="">
-                    <div x-data="{
+                    <br>
+                    <div class="">
+                        <div x-data="{
         responsedata: {},
 
         async getLocations() {
@@ -88,16 +109,16 @@
 
         }
     }">
-                        <button x-on:click="getLocations" class="btn btn-primary">GET location</button>
-                        <h5>
-                            Location returned: <strong x-text="responsedata.location_name"></strong>
-                        </h5>
+                            <button x-on:click="getLocations" class="btn btn-primary">GET location</button>
+                            <h5>
+                                Location returned: <strong x-text="responsedata.location_name"></strong>
+                            </h5>
+                        </div>
                     </div>
-                </div>
-                <br>
+                    <br>
 
-                <div class="">
-                    <div x-data="{
+                    <div class="">
+                        <div x-data="{
         responsedata: {},
 
         async getLocations() {
@@ -105,16 +126,16 @@
 
         }
     }">
-                        <button x-on:click="getLocations" class="btn btn-primary">GET class</button>
-                        <h5>
-                            Class returned: <strong x-text="responsedata.class_name"></strong>
-                        </h5>
+                            <button x-on:click="getLocations" class="btn btn-primary">GET class</button>
+                            <h5>
+                                Class returned: <strong x-text="responsedata.class_name"></strong>
+                            </h5>
+                        </div>
                     </div>
+                    <br>
                 </div>
-                <br>
             </div>
         </div>
-    </div>
 
 </body>
 
