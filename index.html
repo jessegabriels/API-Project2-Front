@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script defer="" src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+
     <style>
         body {
             background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b0/Sturmgewehrsch%C3%BCtze_%2822763755132%29.jpg);
@@ -33,11 +34,12 @@
         responsedata: {},
 
         async getGamemodes() {
-            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/')).json();
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemode/')).json();
 
         }
     }">
                     <button x-on:click="getGamemodes" class="btn btn-primary">GET gamemode</button>
+
                     <h5>
                         Gamemode returned: <strong x-text="responsedata.gamemode_name"></strong>
                     </h5>
@@ -52,13 +54,13 @@
         responsedata: {},
 
         async getLocations() {
-            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/')).json();
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/location/')).json();
 
         }
     }">
                     <button x-on:click="getLocations" class="btn btn-primary">GET location</button>
                     <h5>
-                        Location returned: <strong x-text="responsedata.location_name"></strong>
+                        Location returned: <strong x-text="responsedata[].location_name"></strong>
                     </h5>
                 </div>
             </div>
@@ -66,6 +68,17 @@
 
         </div>
     </div>
+    <script>
+        function getRandomIndex(list) {
+            return Math.floor(Math.random() * list.length);
+        }
+
+        // Example usage
+        var list = ['apple', 'banana', 'orange'];
+        var randomIndex = getRandomIndex(list);
+        console.log(randomIndex); // Outputs a random number between 0 and 2
+
+    </script>
 </body>
 
 </html>
