@@ -40,26 +40,28 @@
 
                 <script>
                     async function makeRequest() {
-                        const textbox1 = document.getElementById("gamemode_name");
-                        const textbox2 = document.getElementById("gamemode_key");
-                        const value1 = textbox1.value;
-                        const value2 = textbox2.value;
-                        const key1 = "gamemode_name";
-                        const key2 = "gamemode_key";
+                            const textbox1 = document.getElementById("gamemode_name");
+                            const textbox2 = document.getElementById("gamemode_key");
+                            const value1 = textbox1.value;
+                            const value2 = textbox2.value;
+                            const key1 = "gamemode_name";
+                            const key2 = "gamemode_key";
 
-                        const response = await fetch("https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                key1: value1,
-                                key2: value2
-                            })
-                        });
+                            responsedata: {};
+
+                            this.responsedata = await (await fetch("https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({
+                                        key1: value1,
+                                        key2: value2
+                                    })
+                                });
 
 
-                    }
+                            }
 
                 </script>
 
@@ -74,6 +76,31 @@
                 </div>
 
 
+
+                <div x-data="{
+        responsedata: null,
+        posttitle: null,
+        async callmethod1() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/', 
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    gamemode_name: this.gamemodeName,
+                    gamemode_key: this.gamemodeKey,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })).json();
+
+            console.log(this.responsedata);
+        },
+    }">
+
+                    <input type="text" id="gamemode_name1" x-model="gamemodeName">
+                    <input type="text" id="gamemode_key1" x-model="gamemodeKey">
+                    <button x-on:click="callmethod1">Call method</button>
+                </div>
 
                 <div class="">
                     <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/classes/" method="post">
