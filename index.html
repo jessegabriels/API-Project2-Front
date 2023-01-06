@@ -60,7 +60,23 @@
     }">
                     <button x-on:click="getLocations" class="btn btn-primary">GET location</button>
                     <h5>
-                        Location returned: <strong x-text="responsedata[].location_name"></strong>
+                        Location returned: <strong x-text="responsedata.location_name"></strong>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="col-5">
+                <div x-data="{
+        responsedata: {},
+
+        async getLocations() {
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/class/')).json();
+
+        }
+    }">
+                    <button x-on:click="getLocations" class="btn btn-primary">GET class</button>
+                    <h5>
+                        Class returned: <strong x-text="responsedata.class_name"></strong>
                     </h5>
                 </div>
             </div>
@@ -68,17 +84,7 @@
 
         </div>
     </div>
-    <script>
-        function getRandomIndex(list) {
-            return Math.floor(Math.random() * list.length);
-        }
 
-        // Example usage
-        var list = ['apple', 'banana', 'orange'];
-        var randomIndex = getRandomIndex(list);
-        console.log(randomIndex); // Outputs a random number between 0 and 2
-
-    </script>
 </body>
 
 </html>
