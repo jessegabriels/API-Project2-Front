@@ -34,7 +34,8 @@
     <div class="container">
         <div class="row">
             <div class="col-5">
-                <input type="text" id="textbox">
+                <input type="text" id="gamemode_name">
+                <input type="text" id="gamemode_key">
                 <button onclick="makeRequest()">Make request</button>
 
                 <script>
@@ -67,8 +68,7 @@
                 <div class="">
                     <form action="https://airsoft-api-service-jessegabriels.cloud.okteto.net/locations/" method="post">
                         <label for="name">Location name:</label><br>
-                        <input type="text" id="gamemode_name" name="gamemode_name"><br>
-                        <input type="text" id="gamemode_key" name="gamemode_key"><br>
+                        <input type="text" id="gamemode" name="gamemode"><br>
                         <input type="submit" class="btn btn-primary" value="Create location">
                     </form>
                 </div>
