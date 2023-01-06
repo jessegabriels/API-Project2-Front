@@ -41,6 +41,7 @@
                     async function makeRequest() {
                         const textbox = document.getElementById("textbox");
                         const value = textbox.value;
+                        const key = "gamemode_name";
 
                         const response = await fetch("https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/", {
                             method: "POST",
@@ -48,7 +49,7 @@
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify({
-                                "gamemode_name": value
+                                key: value;
                             })
                         });
 
