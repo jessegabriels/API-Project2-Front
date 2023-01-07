@@ -107,7 +107,7 @@
                         <h5>
                             Gamemode returned: <strong x-text="responsedata"></strong>
                         </h5>
-                        <div *ngFor="let item responsdata">
+                        <div *ngFor="let item of responsdata | keyvalue">
                             {{item.key}}: {{item.value}}
                         </div>
                     </div>
