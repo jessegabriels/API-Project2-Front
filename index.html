@@ -107,9 +107,9 @@
                         <h5>
                             Gamemode returned: <strong x-text="responsedata"></strong>
                         </h5>
-                        <ul>
-                            <li ng-repeat="(key, value) in responsdata">{{key}}: {{value}}</li>
-                        </ul>
+                        <div *ngFor="let item responsdata">
+                            {{item.key}}: {{item.value}}
+                        </div>
                     </div>
                 </div>
             </div>
