@@ -98,11 +98,11 @@
         responsedata: {},
 
         async getGamemodes() {
-            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemode/')).json();
+            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/')).json();
 
         }
     }">
-                        <button x-on:click="getGamemodes" class="btn btn-primary">GET gamemode</button>
+                        <button x-on:click="getGamemodes" class="btn btn-primary">GET all gamemode</button>
 
                         <h5>
                             Gamemode returned: <strong x-text="responsedata.gamemode_name"></strong>
