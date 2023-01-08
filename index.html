@@ -35,7 +35,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-5">
+            <div class="col-12">
 
                 <div class="">
                     <div x-data="{
@@ -92,27 +92,7 @@
 
             </div>
 
-            <div class="col-5">
-                <div class="">
-                    <div x-data="{
-        responsedata: {},
 
-        async getGamemodes() {
-            this.responsedata = await (await fetch('https://airsoft-api-service-jessegabriels.cloud.okteto.net/gamemodes/')).json();
-
-        }
-    }">
-                        <button x-on:click="getGamemodes" class="btn btn-primary">GET all gamemode</button>
-
-                        <h5>
-                            Gamemode returned: <strong x-text="responsedata"></strong>
-                        </h5>
-                        <div *ngFor="let item of responsdata | keyvalue">
-                            {{item.key}}: {{item.value}}
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
